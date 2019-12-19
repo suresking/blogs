@@ -66,7 +66,7 @@ logo: "a-cool-image.png"
 4. 前往` GitHub` 的 `Applications settings`，配置 `Travis CI `权限，使其能够访问你的 repository。
 5. 你应该会被重定向到 `Travis CI `的页面。如果没有，请 手动前往。
 6. 在浏览器新建一个标签页，前往` GitHub `新建 `Personal Access Token`，只勾选` repo `的权限并生成一个新的` Token`。`Token `生成后请复制并保存好。
-7. 回到 `Travis CI`，前往你的` repository` 的设置页面，在 `Environment Variables `下新建一个环境变量，`Name` 为 `GH_TOKEN`，`Value `为刚才你在 ``GitHub` 生成的 `Token`。确保` DISPLAY VALUE IN BUILD LOG `保持 不被勾选 避免你的 `Token `泄漏。点击` Add `保存。
+7. 回到 `Travis CI`，前往你的` repository` 的设置页面，在 `Environment Variables `下新建一个环境变量，`Name` 为 `GH_TOKEN`，`Value `为刚才你在 `GitHub` 生成的 `Token`。确保` DISPLAY VALUE IN BUILD LOG `保持 不被勾选 避免你的 `Token `泄漏。点击` Add `保存。
 8. 在你的 `Hexo` 站点文件夹中新建一个` .travis.yml `文件：
 
 ```
