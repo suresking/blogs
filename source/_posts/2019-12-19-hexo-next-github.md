@@ -56,7 +56,7 @@ logo: "a-cool-image.png"
 
 ## 四、部署到Github
 
-**摘录官网说明**：（https://hexo.io/zh-cn/docs/github-pages）
+**摘录官网说明**：（ https://hexo.io/zh-cn/docs/github-pages ）
 
 在本教程中，我们将会使用 `Travis CI `将 `Hexo` 博客部署到 `GitHub Pages` 上。`Travis CI` 对于开源` repository `是免费的，但是这意味着你的站点文件将会是公开的。如果你希望你的站点文件不被公开，请直接前往本文 `Private repository `部分。
 
