@@ -2,6 +2,8 @@
 title: Hexo（nexT主题）Github一体化部署方案
 date: 2019-12-19 18:02:11
 tags:
+- hexo
+- github
 ---
 
 ## 一、基础安装
@@ -97,3 +99,17 @@ deploy:
 **Project page**
 如果你更希望你的站点部署在 `<你的 GitHub 用户名>.github.io `的子目录中，你的` repository` 需要直接命名为子目录的名字，这样你的站点可以通过` https://<你的 GitHub 用户名>.github.io/<repository 的名字>` 访问。你需要检查你的` Hexo `配置文件，将` url `修改为` https://<你的 GitHub 用户名>.github.io/<repository 的名字>`、将` root` 的值修改为 `/<repository 的名字>/`
 
+## 五、后续
+
+1. 打开tags标签。`tags: /tags/ || tags`前面的#号去掉。然后执行`$ hexo new page "tags"`，修改`"blogs/source/tags/index.md"`文件内容为：
+
+   ```
+   title: 标签云
+   date: 2019-12-20 08:48:17
+   type: "tags"
+   comments: false
+   ```
+
+   最后将`tag_icon: false`改成`true`即可。
+
+2. 打开版权信息。找到`creative_commons:`将两个`false`改成`true`即可。
