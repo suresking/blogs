@@ -204,7 +204,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-20 13:31:38" itemprop="dateModified" datetime="2019-12-20T13:31:38+00:00">2019-12-20</time>
+                <time title="修改时间：2019-12-22 02:38:21" itemprop="dateModified" datetime="2019-12-22T02:38:21+00:00">2019-12-22</time>
               </span>
 
           
@@ -219,7 +219,9 @@
 
       
           <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>右键项目的“引用”，选择“管理NuGet包”，搜索“ExcelDataReader”。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Choose one of either 1 or 2</span></span><br><span class="line"><span class="comment">//1. Reading from a binary Excel file ('97-2003 format; *.xls)</span></span><br><span class="line">IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);</span><br><span class="line"></span><br><span class="line"><span class="comment">//2. Reading from a OpenXml Excel file (2007 format; *.xlsx)</span></span><br><span class="line">IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Choose one of either 3, 4, or 5</span></span><br><span class="line"><span class="comment">//3. DataSet - The result of each spreadsheet will be created in the result.Tables</span></span><br><span class="line">DataSet result = excelReader.AsDataSet();</span><br><span class="line"></span><br><span class="line"><span class="comment">//4. DataSet - Create column names from first row</span></span><br><span class="line">excelReader.IsFirstRowAsColumnNames = <span class="literal">true</span>;</span><br><span class="line">DataSet result = excelReader.AsDataSet();</span><br><span class="line"></span><br><span class="line"><span class="comment">//5. Data Reader methods</span></span><br><span class="line"><span class="keyword">while</span> (excelReader.Read())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//excelReader.GetInt32(0);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//6. Free resources (IExcelDataReader is IDisposable)</span></span><br><span class="line">excelReader.Close();</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>文件的最开始先<code>using ExcelDataReader</code>。</p>
+<p>然后在相关位置使用下列代码读取：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Choose one of either 1 or 2</span></span><br><span class="line"><span class="comment">//1. Reading from a binary Excel file ('97-2003 format; *.xls)</span></span><br><span class="line">IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);</span><br><span class="line"></span><br><span class="line"><span class="comment">//2. Reading from a OpenXml Excel file (2007 format; *.xlsx)</span></span><br><span class="line">IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Choose one of either 3, 4, or 5</span></span><br><span class="line"><span class="comment">//3. DataSet - The result of each spreadsheet will be created in the result.Tables</span></span><br><span class="line">DataSet result = excelReader.AsDataSet();</span><br><span class="line"></span><br><span class="line"><span class="comment">//4. DataSet - Create column names from first row</span></span><br><span class="line">excelReader.IsFirstRowAsColumnNames = <span class="literal">true</span>;</span><br><span class="line">DataSet result = excelReader.AsDataSet();</span><br><span class="line"></span><br><span class="line"><span class="comment">//5. Data Reader methods</span></span><br><span class="line"><span class="keyword">while</span> (excelReader.Read())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//excelReader.GetInt32(0);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//6. Free resources (IExcelDataReader is IDisposable)</span></span><br><span class="line">excelReader.Close();</span><br></pre></td></tr></table></figure>
 
 
       
@@ -271,7 +273,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-20 13:31:38" itemprop="dateModified" datetime="2019-12-20T13:31:38+00:00">2019-12-20</time>
+                <time title="修改时间：2019-12-22 02:38:21" itemprop="dateModified" datetime="2019-12-22T02:38:21+00:00">2019-12-22</time>
               </span>
 
           
@@ -388,7 +390,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-20 13:31:38" itemprop="dateModified" datetime="2019-12-20T13:31:38+00:00">2019-12-20</time>
+                <time title="修改时间：2019-12-22 02:38:21" itemprop="dateModified" datetime="2019-12-22T02:38:21+00:00">2019-12-22</time>
               </span>
 
           
