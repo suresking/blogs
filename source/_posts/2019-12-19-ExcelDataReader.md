@@ -11,6 +11,10 @@ tags:
 
 ### 使用
 
+文件的最开始先`using ExcelDataReader`。
+
+然后在相关位置使用下列代码读取：
+
 ```csharp
 FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);
 
