@@ -173,6 +173,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://git.wxzvip.com/blogs/2019/12/28/listview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://image.wxzvip.cn/avatar.jpg">
+      <meta itemprop="name" content="感悟">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的学习笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blogs/2019/12/28/listview/" class="post-title-link" itemprop="url">Listview用法概览</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-28 11:04:26 / 修改时间：03:16:43" itemprop="dateCreated datePublished" datetime="2019-12-28T11:04:26+00:00">2019-12-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Listview用法概览"><a href="#Listview用法概览" class="headerlink" title="Listview用法概览"></a>Listview用法概览</h1><h2 id="一、初始化"><a href="#一、初始化" class="headerlink" title="一、初始化"></a>一、初始化</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">listView1.View = View.Details;</span><br><span class="line">listView1.MultiSelect = <span class="literal">false</span>;</span><br><span class="line">listView1.GridLines = <span class="literal">true</span>;</span><br><span class="line">listView1.FullRowSelect = <span class="literal">true</span>;</span><br><span class="line">imageList = <span class="keyword">new</span> ImageList();</span><br><span class="line">imageList.ImageSize = <span class="keyword">new</span> Size(<span class="number">1</span>, <span class="number">26</span>);</span><br><span class="line">listView1.SmallImageList = imageList;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blogs/2019/12/28/listview/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://git.wxzvip.com/blogs/2019/12/19/ExcelDataReader/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -204,7 +270,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-22 02:38:21" itemprop="dateModified" datetime="2019-12-22T02:38:21+00:00">2019-12-22</time>
+                <time title="修改时间：2019-12-28 03:16:43" itemprop="dateModified" datetime="2019-12-28T03:16:43+00:00">2019-12-28</time>
               </span>
 
           
@@ -219,11 +285,14 @@
 
       
           <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>右键项目的“引用”，选择“管理NuGet包”，搜索“ExcelDataReader”。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>文件的最开始先<code>using ExcelDataReader</code>。</p>
-<p>然后在相关位置使用下列代码读取：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Choose one of either 1 or 2</span></span><br><span class="line"><span class="comment">//1. Reading from a binary Excel file ('97-2003 format; *.xls)</span></span><br><span class="line">IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);</span><br><span class="line"></span><br><span class="line"><span class="comment">//2. Reading from a OpenXml Excel file (2007 format; *.xlsx)</span></span><br><span class="line">IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Choose one of either 3, 4, or 5</span></span><br><span class="line"><span class="comment">//3. DataSet - The result of each spreadsheet will be created in the result.Tables</span></span><br><span class="line">DataSet result = excelReader.AsDataSet();</span><br><span class="line"></span><br><span class="line"><span class="comment">//4. DataSet - Create column names from first row</span></span><br><span class="line">excelReader.IsFirstRowAsColumnNames = <span class="literal">true</span>;</span><br><span class="line">DataSet result = excelReader.AsDataSet();</span><br><span class="line"></span><br><span class="line"><span class="comment">//5. Data Reader methods</span></span><br><span class="line"><span class="keyword">while</span> (excelReader.Read())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//excelReader.GetInt32(0);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//6. Free resources (IExcelDataReader is IDisposable)</span></span><br><span class="line">excelReader.Close();</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blogs/2019/12/19/ExcelDataReader/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -273,7 +342,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-22 02:38:21" itemprop="dateModified" datetime="2019-12-22T02:38:21+00:00">2019-12-22</time>
+                <time title="修改时间：2019-12-28 03:16:43" itemprop="dateModified" datetime="2019-12-28T03:16:43+00:00">2019-12-28</time>
               </span>
 
           
@@ -292,55 +361,14 @@
 <li><code>NodeJs</code>安装，二者都可以从淘宝镜像下载。</li>
 <li><code>Hexo</code>安装<br><code>$ npm install -g hexo-cli</code></li>
 </ol>
-<h2 id="二、建站"><a href="#二、建站" class="headerlink" title="二、建站"></a>二、建站</h2><ol>
-<li><p>相应目录下运行Git Bash，输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo init &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install</span></span><br></pre></td></tr></table></figure>
-
-<p>进行新建；如果是重装或在另一台电脑，从<code>Github</code>克隆回来之后，只在博客目录下运行第三句即可。</p>
-</li>
-<li><p>安装主题有两种方法：2.1.到<code>https://github.com/theme-next/hexo-theme-next</code>下载最新的release包，解压到theme目录下，改名为next；2.2.直接克隆<code>git clone https://github.com/theme-next/hexo-theme-next themes/next</code>，克隆完成后到next目录下把隐藏的<code>.git</code>文件夹删除。</p>
-</li>
-</ol>
-<h2 id="三、覆盖主题配置"><a href="#三、覆盖主题配置" class="headerlink" title="三、覆盖主题配置"></a>三、覆盖主题配置</h2><p>通常情况下，<code>Hexo</code> 主题是一个独立的项目，并拥有一个独立的<code>_config.yml</code> 配置文件。<br>你可以在站点的<code>_config.yml</code>配置文件中配置你的主题，这样你就不需要 fork 一份主题并维护主题独立的配置文件。</p>
-<p>以下是一个覆盖主题配置的例子：</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># _config.yml</span></span><br><span class="line"><span class="symbol">theme_config:</span></span><br><span class="line"><span class="symbol">  bio:</span> <span class="string">"My awesome bio"</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># themes/my-theme/_config.yml</span></span><br><span class="line"><span class="symbol">bio:</span> <span class="string">"Some generic bio"</span></span><br><span class="line"><span class="symbol">logo:</span> <span class="string">"a-cool-image.png"</span></span><br></pre></td></tr></table></figure>
-
-<p>最终主题配置的输出是：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attribute">bio</span>: <span class="string">"My awesome bio"</span>,</span><br><span class="line">  logo: <span class="string">"a-cool-image.png"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样直接把需要修改的内容拷贝到<code>Hexo</code>的<code>_config.yml</code>修改就行了，主题内部的配置文件仍在一边不需要管他。</p>
-<h2 id="四、部署到Github"><a href="#四、部署到Github" class="headerlink" title="四、部署到Github"></a>四、部署到Github</h2><p><strong>摘录官网说明</strong>：（ <a href="https://hexo.io/zh-cn/docs/github-pages" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/github-pages</a> ）</p>
-<p>在本教程中，我们将会使用 <code>Travis CI</code>将 <code>Hexo</code> 博客部署到 <code>GitHub Pages</code> 上。<code>Travis CI</code> 对于开源<code>repository</code>是免费的，但是这意味着你的站点文件将会是公开的。如果你希望你的站点文件不被公开，请直接前往本文 <code>Private repository</code>部分。</p>
-<ol>
-<li>新建一个 <code>repository</code>。如果你希望你的站点能通过 <code>&lt;你的 GitHub 用户名&gt;.github.io</code>域名访问，你的 <code>repository</code> 应该直接命名为<code>&lt;你的 GitHub 用户名&gt;.github.io</code>。</li>
-<li>将你的 <code>Hexo</code> 站点文件夹推送到<code>repository</code> 中。默认情况下 public 目录将不会被推送到 <code>repository</code> 中，你应该检查<code>.gitignore</code>文件中是否包含<code>public</code> 一行，如果没有请加上。</li>
-<li>将 <code>Travis CI</code> 添加到你的 <code>GitHub</code> 账户中。</li>
-<li>前往<code>GitHub</code> 的 <code>Applications settings</code>，配置 <code>Travis CI</code>权限，使其能够访问你的 repository。</li>
-<li>你应该会被重定向到 <code>Travis CI</code>的页面。如果没有，请 手动前往。</li>
-<li>在浏览器新建一个标签页，前往<code>GitHub</code>新建 <code>Personal Access Token</code>，只勾选<code>repo</code>的权限并生成一个新的<code>Token</code>。<code>Token</code>生成后请复制并保存好。</li>
-<li>回到 <code>Travis CI</code>，前往你的<code>repository</code> 的设置页面，在 <code>Environment Variables</code>下新建一个环境变量，<code>Name</code> 为 <code>GH_TOKEN</code>，<code>Value</code>为刚才你在 <code>GitHub</code> 生成的 <code>Token</code>。确保<code>DISPLAY VALUE IN BUILD LOG</code>保持 不被勾选 避免你的 <code>Token</code>泄漏。点击<code>Add</code>保存。</li>
-<li>在你的 <code>Hexo</code> 站点文件夹中新建一个<code>.travis.yml</code>文件：</li>
-</ol>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sudo:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">10</span> <span class="comment"># use nodejs v10 LTS</span></span><br><span class="line"><span class="attr">cache:</span> <span class="string">npm</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">master</span> <span class="comment"># build master branch only</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">generate</span> <span class="comment"># generate static files</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">provider:</span> <span class="string">pages</span></span><br><span class="line">  <span class="attr">skip-cleanup:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">github-token:</span> <span class="string">$GH_TOKEN</span></span><br><span class="line">  <span class="attr">keep-history:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">on:</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">local-dir:</span> <span class="string">public</span></span><br></pre></td></tr></table></figure>
-
-<ol start="9">
-<li>将<code>.travis.yml</code> 推送到 <code>repository</code> 中。<code>Travis CI</code>应该会自动开始运行，并将生成的文件推送到同一 <code>repository</code> 下的 <code>gh-pages</code> 分支下</li>
-<li>在 <code>GitHub</code> 中前往你的<code>repository</code> 的设置页面，修改<code>GitHub Pages</code>的部署分支为 <code>gh-pages</code>。</li>
-<li>前往 <code>https://&lt;你的 GitHub 用户名&gt;.github.io</code>查看你的站点是否可以访问。这可能需要一些时间。</li>
-</ol>
-<p><strong>Project page</strong><br>如果你更希望你的站点部署在 <code>&lt;你的 GitHub 用户名&gt;.github.io</code>的子目录中，你的<code>repository</code> 需要直接命名为子目录的名字，这样你的站点可以通过<code>https://&lt;你的 GitHub 用户名&gt;.github.io/&lt;repository 的名字&gt;</code> 访问。你需要检查你的<code>Hexo</code>配置文件，将<code>url</code>修改为<code>https://&lt;你的 GitHub 用户名&gt;.github.io/&lt;repository 的名字&gt;</code>、将<code>root</code> 的值修改为 <code>/&lt;repository 的名字&gt;/</code></p>
-<h2 id="五、后续"><a href="#五、后续" class="headerlink" title="五、后续"></a>五、后续</h2><ol>
-<li><p>打开tags标签。<code>tags: /tags/ || tags</code>前面的#号去掉。然后执行<code>$ hexo new page &quot;tags&quot;</code>，修改<code>&quot;blogs/source/tags/index.md&quot;</code>文件内容为：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">标签云</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2019</span><span class="number">-12</span><span class="number">-20</span> <span class="number">08</span><span class="string">:48:17</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">"tags"</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p>最后将<code>tag_icon: false</code>改成<code>true</code>即可。</p>
-</li>
-<li><p>打开版权信息。找到<code>creative_commons:</code>将两个<code>false</code>改成<code>true</code>即可。</p>
-</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blogs/2019/12/19/hexo-next-github/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -390,7 +418,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-22 02:38:21" itemprop="dateModified" datetime="2019-12-22T02:38:21+00:00">2019-12-22</time>
+                <time title="修改时间：2019-12-28 03:16:43" itemprop="dateModified" datetime="2019-12-28T03:16:43+00:00">2019-12-28</time>
               </span>
 
           
@@ -485,14 +513,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/blogs/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blogs/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
