@@ -9,6 +9,8 @@ tags:
 
 右键项目的“引用”，选择“管理NuGet包”，搜索“ExcelDataReader”。
 
+<!-- more -->
+
 ### 使用
 
 文件的最开始先`using ExcelDataReader`。

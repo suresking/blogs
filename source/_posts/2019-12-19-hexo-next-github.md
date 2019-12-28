@@ -13,6 +13,8 @@ tags:
 3. `Hexo`安装
    `$ npm install -g hexo-cli`
 
+<!-- more -->
+
 ## 二、建站
 
 1. 相应目录下运行Git Bash，输入
