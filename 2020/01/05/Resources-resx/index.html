@@ -43,21 +43,22 @@
   };
 </script>
 
-  <meta name="description" content="Listview用法概览一、初始化1234567listView1.View &#x3D; View.Details;listView1.MultiSelect &#x3D; false;listView1.GridLines &#x3D; true;listView1.FullRowSelect &#x3D; true;imageList &#x3D; new ImageList();imageList.ImageSize &#x3D; new Size">
+  <meta name="description" content="添加项目右键，调出属性，在资源选项卡里即可添加资源 一般添加图片的话，资源的名字就是图片的名字，无扩展名  使用在程序中调用，只需要一句话：Properties.Resources.资源名">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Listview用法概览">
-<meta property="og:url" content="https:&#x2F;&#x2F;git.wxzvip.com&#x2F;blogs&#x2F;2019&#x2F;12&#x2F;28&#x2F;listview&#x2F;index.html">
+<meta property="og:title" content="资源文件Resources.resx的使用方法">
+<meta property="og:url" content="https:&#x2F;&#x2F;git.wxzvip.com&#x2F;blogs&#x2F;2020&#x2F;01&#x2F;05&#x2F;Resources-resx&#x2F;index.html">
 <meta property="og:site_name" content="我的学习笔记">
-<meta property="og:description" content="Listview用法概览一、初始化1234567listView1.View &#x3D; View.Details;listView1.MultiSelect &#x3D; false;listView1.GridLines &#x3D; true;listView1.FullRowSelect &#x3D; true;imageList &#x3D; new ImageList();imageList.ImageSize &#x3D; new Size">
+<meta property="og:description" content="添加项目右键，调出属性，在资源选项卡里即可添加资源 一般添加图片的话，资源的名字就是图片的名字，无扩展名  使用在程序中调用，只需要一句话：Properties.Resources.资源名">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-28T11:04:26.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;git.wxzvip.com&#x2F;images&#x2F;resources001.jpg">
+<meta property="article:published_time" content="2020-01-05T16:34:30.000Z">
 <meta property="article:modified_time" content="2020-01-05T08:54:13.013Z">
 <meta property="article:author" content="感悟">
 <meta property="article:tag" content="CSharp">
-<meta property="article:tag" content="Listview">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;git.wxzvip.com&#x2F;images&#x2F;resources001.jpg">
 
-<link rel="canonical" href="https://git.wxzvip.com/blogs/2019/12/28/listview/">
+<link rel="canonical" href="https://git.wxzvip.com/blogs/2020/01/05/Resources-resx/">
 
 
 <script id="page-configurations">
@@ -71,7 +72,7 @@
   };
 </script>
 
-  <title>Listview用法概览 | 我的学习笔记</title>
+  <title>资源文件Resources.resx的使用方法 | 我的学习笔记</title>
   
 
 
@@ -179,7 +180,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://git.wxzvip.com/blogs/2019/12/28/listview/">
+    <link itemprop="mainEntityOfPage" href="https://git.wxzvip.com/blogs/2020/01/05/Resources-resx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="http://image.wxzvip.cn/avatar.jpg">
@@ -192,7 +193,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Listview用法概览
+          资源文件Resources.resx的使用方法
         </h1>
 
         <div class="post-meta">
@@ -201,16 +202,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-12-28 11:04:26" itemprop="dateCreated datePublished" datetime="2019-12-28T11:04:26+00:00">2019-12-28</time>
+              <time title="创建时间：2020-01-05 16:34:30 / 修改时间：08:54:13" itemprop="dateCreated datePublished" datetime="2020-01-05T16:34:30+00:00">2020-01-05</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-05 08:54:13" itemprop="dateModified" datetime="2020-01-05T08:54:13+00:00">2020-01-05</time>
-              </span>
 
           
 
@@ -223,19 +218,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Listview用法概览"><a href="#Listview用法概览" class="headerlink" title="Listview用法概览"></a>Listview用法概览</h1><h2 id="一、初始化"><a href="#一、初始化" class="headerlink" title="一、初始化"></a>一、初始化</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">listView1.View = View.Details;</span><br><span class="line">listView1.MultiSelect = <span class="literal">false</span>;</span><br><span class="line">listView1.GridLines = <span class="literal">true</span>;</span><br><span class="line">listView1.FullRowSelect = <span class="literal">true</span>;</span><br><span class="line">imageList = <span class="keyword">new</span> ImageList();</span><br><span class="line">imageList.ImageSize = <span class="keyword">new</span> Size(<span class="number">1</span>, <span class="number">26</span>);</span><br><span class="line">listView1.SmallImageList = imageList;</span><br></pre></td></tr></table></figure>
+        <h1 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h1><p><code>项目</code>右键，调出<code>属性</code>，在<code>资源</code>选项卡里即可添加资源</p>
+<p>一般添加图片的话，资源的名字就是图片的名字，无扩展名</p>
+<p><img src="/images/resources001.jpg" alt=""></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在程序中调用，只需要一句话：<br><code>Properties.Resources.资源名</code></p>
 
-<a id="more"></a>
-
-<h2 id="二、添加列"><a href="#二、添加列" class="headerlink" title="二、添加列"></a>二、添加列</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ColumnHeader c1 = <span class="keyword">new</span> ColumnHeader();</span><br><span class="line">c1.Text = <span class="string">"编号"</span>;</span><br><span class="line">c1.Width = <span class="number">80</span>;</span><br><span class="line">listView1.Columns.Add(c1);</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、添加项目"><a href="#三、添加项目" class="headerlink" title="三、添加项目"></a>三、添加项目</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">listView1.Items.Clear();</span><br><span class="line"><span class="keyword">foreach</span>(DataRow dr <span class="keyword">in</span> dt.Rows)</span><br><span class="line">&#123;</span><br><span class="line">    ListViewItem lvi = <span class="keyword">new</span> ListViewItem();</span><br><span class="line">    lvi.Text = dr[<span class="number">0</span>].ToString();</span><br><span class="line">    lvi.SubItems.Add(dr[<span class="number">1</span>].ToString());</span><br><span class="line">    lvi.SubItems.Add(dr[<span class="number">2</span>].ToString());</span><br><span class="line">    listView1.Items.Add(lvi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、获取当前选择项的内容"><a href="#四、获取当前选择项的内容" class="headerlink" title="四、获取当前选择项的内容"></a>四、获取当前选择项的内容</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">listView1_SelectedIndexChanged</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (listView1.SelectedItems.Count &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//选择项的对象即 listView1.SelectedItems[0]</span></span><br><span class="line">        tbID.Text = listView1.SelectedItems[<span class="number">0</span>].SubItems[<span class="number">0</span>].Text.Trim();</span><br><span class="line">        tbName.Text = listView1.SelectedItems[<span class="number">0</span>].SubItems[<span class="number">1</span>].Text.Trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、实时显示当前修改的内容"><a href="#五、实时显示当前修改的内容" class="headerlink" title="五、实时显示当前修改的内容"></a>五、实时显示当前修改的内容</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">RefreshList();<span class="comment">//更新全部List view</span></span><br><span class="line">ListViewItem item = listView1.FindItemWithText(tbID.Text);</span><br><span class="line">item.BackColor = Color.LightSkyBlue;</span><br><span class="line"><span class="keyword">int</span> p = item.Index;</span><br><span class="line">p = p &gt;= <span class="number">1</span> ? p - <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">listView1.Items[p].BackColor = Color.FromArgb(<span class="number">200</span>, <span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">listView1.TopItem = listView1.Items[p];</span><br></pre></td></tr></table></figure>
-
-<h2 id="六、暂时想到这些。"><a href="#六、暂时想到这些。" class="headerlink" title="六、暂时想到这些。"></a>六、暂时想到这些。</h2>
     </div>
 
     
@@ -250,7 +237,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://git.wxzvip.com/blogs/2019/12/28/listview/" title="Listview用法概览">https://git.wxzvip.com/blogs/2019/12/28/listview/</a>
+    <a href="https://git.wxzvip.com/blogs/2020/01/05/Resources-resx/" title="资源文件Resources.resx的使用方法">https://git.wxzvip.com/blogs/2020/01/05/Resources-resx/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -263,7 +250,6 @@
           
           <div class="post-tags">
               <a href="/blogs/tags/CSharp/" rel="tag"><i class="fa fa-tag"></i> CSharp</a>
-              <a href="/blogs/tags/Listview/" rel="tag"><i class="fa fa-tag"></i> Listview</a>
           </div>
 
         
@@ -272,13 +258,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blogs/2019/12/19/ExcelDataReader/" rel="prev" title="使用ExcelDataReader读写excel">
-      <i class="fa fa-chevron-left"></i> 使用ExcelDataReader读写excel
+    <a href="/blogs/2020/01/04/get-https-file/" rel="prev" title="获取网络文件内容，http、https通用">
+      <i class="fa fa-chevron-left"></i> 获取网络文件内容，http、https通用
     </a></div>
-      <div class="post-nav-item">
-    <a href="/blogs/2019/12/28/baidu-ocr/" rel="next" title="使用baidu的ocr识别图片中的文字">
-      使用baidu的ocr识别图片中的文字 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -317,7 +300,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Listview用法概览"><span class="nav-number">1.</span> <span class="nav-text">Listview用法概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、初始化"><span class="nav-number">1.1.</span> <span class="nav-text">一、初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、添加列"><span class="nav-number">1.2.</span> <span class="nav-text">二、添加列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、添加项目"><span class="nav-number">1.3.</span> <span class="nav-text">三、添加项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、获取当前选择项的内容"><span class="nav-number">1.4.</span> <span class="nav-text">四、获取当前选择项的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、实时显示当前修改的内容"><span class="nav-number">1.5.</span> <span class="nav-text">五、实时显示当前修改的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、暂时想到这些。"><span class="nav-number">1.6.</span> <span class="nav-text">六、暂时想到这些。</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#添加"><span class="nav-number">1.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -464,7 +447,7 @@
       repo: 'blog-comments',
       owner: 'suresking',
       admin: ['suresking'],
-      id: 'd4e102d78853f693a936cc9e3f6e56d0',
+      id: '117fa15fa7c129fd7dec68c961beddae',
         language: 'zh-CN',
       distractionFreeMode: 'true'
     });
