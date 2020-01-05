@@ -10,7 +10,7 @@ tags: CSharp
 
 一般添加图片的话，资源的名字就是图片的名字，无扩展名
 
-![](/images/resources001.jpg)
+![](images/resources001.jpg)
 
 # 使用
 
