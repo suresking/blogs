@@ -30,43 +30,43 @@ tags: C#
 
 ## 主要类库介绍
 
-  .NET 支持对象`xml`序列化和反序列化的类库主要位于命名空间`System.Xml.Serialization`中。
+.NET 支持对象`xml`序列化和反序列化的类库主要位于命名空间`System.Xml.Serialization`中。
 
-### `XmlSerializer` 类
+### XmlSerializer 类
 
-  该类用一种高度松散耦合的方式提供串行化服务。你的类不需要继承特别的基类，而且它们也不需要实现特别的接口。相反，你只需在你的类或者这些类的公共域以及读/写属性里加上自定义的特性。`XmlSerializer`通过反射机制读取这些特性并用它们将你的类和类成员映射到`xml`元素和属性。
+该类用一种高度松散耦合的方式提供串行化服务。你的类不需要继承特别的基类，而且它们也不需要实现特别的接口。相反，你只需在你的类或者这些类的公共域以及读/写属性里加上自定义的特性。`XmlSerializer`通过反射机制读取这些特性并用它们将你的类和类成员映射到`xml`元素和属性。
 
-### `XmlAttribute` 类
+### XmlAttribute 类
 
-  指定类的公共域或读/写属性对应`xml`文件的`Attribute`。
+指定类的公共域或读/写属性对应`xml`文件的`Attribute`。
 
-  例：`[XmlAttribute(“type”)] `or` [XmlAttribute(AttributeName=”type”)]`
+例：`[XmlAttribute(“type”)] `or` [XmlAttribute(AttributeName=”type”)]`
 
-### `XmlElementAttribute`类
+### XmlElementAttribute类
 
-  指定类的公共域或读/写属性对应`xml`文件的`Element`。
+指定类的公共域或读/写属性对应`xml`文件的`Element`。
 
-  例：`[XmlElement(“Maufacturer”)] `or `[XmlElement(ElementName=”Manufacturer”)]`
+例：`[XmlElement(“Maufacturer”)] `or`[XmlElement(ElementName=”Manufacturer”)]`
 
-### `XmlRootAttribute`类
+### XmlRootAttribute类
 
-  `Xml`序列化时，由该特性指定的元素将被序列化成`xml`的根元素。
+`Xml`序列化时，由该特性指定的元素将被序列化成`xml`的根元素。
 
-  例：`[XmlRoot(“RootElement”)] `or` [XmlRoot(ElementName = “RootElements”)]`
+例：`[XmlRoot(“RootElement”)] `or` [XmlRoot(ElementName = “RootElements”)]`
 
-### `XmlTextAttribute `类
+### XmlTextAttribute类
 
-  `Xml`序列化时，由该特性指定的元素值将被序列化成`xml`元素的值。一个类只允许拥有一个该特性类的实例，因为`xml`元素只能有一个值。
+`Xml`序列化时，由该特性指定的元素值将被序列化成`xml`元素的值。一个类只允许拥有一个该特性类的实例，因为`xml`元素只能有一个值。
 
-### `XmlIgnoreAttribute`类
+### XmlIgnoreAttribute类
 
-  `Xml`序列化时不会序列化该特性指定的元素。
+`Xml`序列化时不会序列化该特性指定的元素。
 
-# 实例
+## 实例
 
 下面例子中的`xml schema `描述了一个简单的人力资源信息，其中包含了`xml`的大部分格式，如`xml `元素相互嵌套， `xml`元素既有元素值，又有属性值。
 
- ### 待序列化的类层次结构
+### 待序列化的类层次结构
 
 ``` c#
 [XmlRoot("humanResource")]
@@ -149,7 +149,7 @@ public class InformationItem
 
 ```
 
-### 利用`XmlSerializer`类进行序列化和反序列化的实现（一般利用缓存机制实现`xml`文件只解析一次。）
+### 利用XmlSerializer类进行序列化和反序列化的实现（一般利用缓存机制实现xml文件只解析一次。）
 
 ```c#
 public sealed class ConfigurationManager
@@ -216,7 +216,7 @@ public sealed class ConfigurationManager
 
 ## 有关.NET中序列化的一些知识
 
- “序列化”可被定义为将对象的状态存储到存储媒介中的过程。在此过程中，对象的公共字段和私有字段以及类的名称（包括包含该类的程序集）都被转换为字节流，然后写入数据流。在以后“反序列化”该对象时，创建原始对象的精确复本。
+“序列化”可被定义为将对象的状态存储到存储媒介中的过程。在此过程中，对象的公共字段和私有字段以及类的名称（包括包含该类的程序集）都被转换为字节流，然后写入数据流。在以后“反序列化”该对象时，创建原始对象的精确复本。
 
 ### 为什么要选择序列化
 
@@ -280,8 +280,6 @@ mySerializer.Serialize(myWriter, MEABlock);
 </MEABlock>
 ```
 
-
-
 对于对象的反序列化，则如下：
 
 ```c#
@@ -295,8 +293,6 @@ FileStream myFileStream = new FileStream("myFileName.xml", FileMode.Open);
 myBlock = (MEABlock) mySerializer.Deserialize(myFileStream);
 
 ```
-
-
 
 #### 二进制序列化
 
