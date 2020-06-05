@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blogs/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blogs/images/favicon.ico">
+
+<link rel="stylesheet" href="/blogs/css/main.css">
+
+
+<link rel="stylesheet" href="/blogs/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://git.wxzvip.com/blogs').hostname,
+    root: '/blogs/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="这篇是源码&#x2F;pages分离的，留作参考吧。  基础的东西不写了，网上一堆一堆的。 我本机nodejs、git都安装好了。（ https:&#x2F;&#x2F;hexo.io&#x2F; ） 建立hexo20191215目录 在目录下启动git bash，输入 12npm install hexo-cli -ghexo init  再输入 1git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用hexo（next主题）在github上发布自己的博客">
+<meta property="og:url" content="https://git.wxzvip.com/blogs/2019/12/16/hexo-next-github/index.html">
+<meta property="og:site_name" content="我的学习笔记">
+<meta property="og:description" content="这篇是源码&#x2F;pages分离的，留作参考吧。  基础的东西不写了，网上一堆一堆的。 我本机nodejs、git都安装好了。（ https:&#x2F;&#x2F;hexo.io&#x2F; ） 建立hexo20191215目录 在目录下启动git bash，输入 12npm install hexo-cli -ghexo init  再输入 1git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hex">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-16T20:49:31.000Z">
+<meta property="article:modified_time" content="2020-06-05T08:11:02.783Z">
+<meta property="article:author" content="感悟">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="github">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://git.wxzvip.com/blogs/2019/12/16/hexo-next-github/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>用hexo（next主题）在github上发布自己的博客 | 我的学习笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta custom-logo">
+
+    <div>
+      <a href="/blogs/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我的学习笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来</p>
+      <a>
+        <img class="custom-logo-image" src="http://image.wxzvip.cn/tyj-logo.png" alt="我的学习笔记">
+      </a>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blogs/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blogs/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blogs/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://git.wxzvip.com/blogs/2019/12/16/hexo-next-github/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://image.wxzvip.cn/avatar.jpg">
+      <meta itemprop="name" content="感悟">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的学习笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用hexo（next主题）在github上发布自己的博客
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-16 20:49:31" itemprop="dateCreated datePublished" datetime="2019-12-16T20:49:31+00:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-05 08:11:02" itemprop="dateModified" datetime="2020-06-05T08:11:02+00:00">2020-06-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>这篇是源码/pages分离的，留作参考吧。</strong></p>
+<hr>
+<p>基础的东西不写了，网上一堆一堆的。</p>
+<p>我本机nodejs、git都安装好了。（ <a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a> ）</p>
+<p>建立<code>hexo20191215</code>目录</p>
+<p>在目录下启动git bash，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>再输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>直接获取最新的next主题。</p>
+<a id="more"></a>
+
+<p>打开<code>_config.yml</code>文件，找theme，找到theme: landscape修改为theme: next</p>
+<p>然后进入theme/next文件夹，查找<code>_config.yml</code>文件中的Scheme Settings修改scheme: Muse为scheme: Gemini</p>
+<p>输入<code>hexo -g &amp;&amp; hexo -s</code>，运行后就可以用<code>localhost：4000</code>先测试看看了。有了内容后用<code>hexo clean &amp;&amp; hexo generate &amp;&amp; hexo server</code>测试。</p>
+<p><strong>主题配置文件</strong>我修改了：footer下的since打开；copyright加上；beian（备案）添加；avatar的url修改为七牛云的avatar.jpg；links修改；social里面的GitHub修改；favicon:下面所有，原来的我给注释了，同时在<code>themes\next\source\images</code>下添加favicon.ico文件；</p>
+<p><strong>Hexo主力配置文件</strong>修改：Site项下面的内容；url项；</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">url:</span> <span class="string">https:</span><span class="comment">//git.wxzvip.com/blog</span></span><br><span class="line"><span class="string">root:</span> <span class="regexp">/blog/</span></span><br></pre></td></tr></table></figure>
+
+<p>因为我是在GitHub新建了一个仓库，叫做blog，建好后里面新建一个readme.md文件，这个不重要，因为发布的时候就自动给删除了。但有至少一个文件，<strong>才能打开blog的pages选项</strong>，选master分支，同时打开https。</p>
+<p>再修改最后的deploy: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>: git</span><br><span class="line">repo: git@github.com:suresking/blog.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装发布插件</strong></p>
+<p><code>npm install hexo-deployer-git –save</code></p>
+<p>最后使用<code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code>发布。</p>
+<p><strong>源代码另外在腾讯云开发平台上保存。<code>git add .</code>时出错</strong>：</p>
+<p>因为themes/next我是用git clone来的，所以它的目录下也有一个.git文件夹，有独立的git控制，这个要用到submodule，很麻烦好像。我找个简单的办法：去next目录查看隐藏文件，找到.git目录后删除；再回到hexo根目录下，运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm -rf --cached themes/next</span><br><span class="line">git add themes/next</span><br></pre></td></tr></table></figure>
+
+<p>好像就可以了。</p>
+<p><strong>[git] warning: LF will be replaced by CRLF | fatal: CRLF would be replaced by LF</strong>，然后就出现这么个提示，搜了搜，是因为Git的换行符检查功能，因为我只在Windows工作，并且这个库是我自己用，我采用第三种办法<code>git config --global core.autocrlf false</code>。搞定。</p>
+<p><code>hexo new filename</code>时，文件名不要带.md扩展名，它会自动加上的。</p>
+<hr>
+<h2 id="重装或在另一台机器操作时："><a href="#重装或在另一台机器操作时：" class="headerlink" title="重装或在另一台机器操作时："></a>重装或在另一台机器操作时：</h2><p>若有必要，安装hexo，命令：<code>npm install hexo-cli -g</code></p>
+<p>适当位置打开git bash，运行<code>$ git clone git@git.dev.tencent.com:suresking/blog.git</code></p>
+<p>然后进入blog目录，运行<code>npm install</code>，这条命令会自动安装node_modules目录及相关内容。</p>
+<p>运行<code>hexo g &amp;&amp; hexo d</code>即可。不过又出现上面的CRLF问题，解决方法同上。</p>
+<h2 id="其他修改"><a href="#其他修改" class="headerlink" title="其他修改"></a>其他修改</h2><ul>
+<li><code>motion -&gt; enable:</code>改为false，关闭动画效果。</li>
+<li>主题config文件中找到<code>custom_file_path:</code>，去掉最后style的注释，然后在<code>&quot;blog/source/&quot;</code>目录下新增<code>&quot;_data/styles.styl&quot;</code>文件，加入一些自定的css。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>感悟
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://git.wxzvip.com/blogs/2019/12/16/hexo-next-github/" title="用hexo（next主题）在github上发布自己的博客">https://git.wxzvip.com/blogs/2019/12/16/hexo-next-github/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blogs/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+              <a href="/blogs/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/blogs/2019/12/19/hexo-next-github/" rel="next" title="Hexo（nexT主题）Github一体化部署方案">
+      Hexo（nexT主题）Github一体化部署方案 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重装或在另一台机器操作时："><span class="nav-number">1.</span> <span class="nav-text">重装或在另一台机器操作时：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他修改"><span class="nav-number">2.</span> <span class="nav-text">其他修改</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="感悟"
+      src="http://image.wxzvip.cn/avatar.jpg">
+  <p class="site-author-name" itemprop="name">感悟</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blogs/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blogs/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/suresking" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;suresking" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:w@wxzvip.cn" title="E-Mail → mailto:w@wxzvip.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" class="cc-opacity" rel="noopener" target="_blank"><img src="/blogs/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://cn.bing.com/" title="https:&#x2F;&#x2F;cn.bing.com" rel="noopener" target="_blank">必应</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备17027395号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">我的学习笔记</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.1.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blogs/lib/anime.min.js"></script>
+  <script src="/blogs/lib/velocity/velocity.min.js"></script>
+  <script src="/blogs/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blogs/js/utils.js"></script>
+
+<script src="/blogs/js/motion.js"></script>
+
+
+<script src="/blogs/js/schemes/pisces.js"></script>
+
+
+<script src="/blogs/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'f8cc6e08a9621f2131e4',
+      clientSecret: '52f79287acb8a3230a82ce664dfb4c080a6c4882',
+      repo: 'blog-comments',
+      owner: 'suresking',
+      admin: ['suresking'],
+      id: 'c5bf1e9d7d7d25b2079db3615f14a72e',
+        language: 'zh-CN',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>
