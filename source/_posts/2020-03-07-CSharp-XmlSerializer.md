@@ -22,6 +22,8 @@ tags: CSharp
 
 当前比较热火的`web services`使用`soap`协议，`soap`协议也是以对象的可序列化为基础的。
 
+<!-- more -->
+
 ## 概述
 
 .NET Framework为处理XML数据提供了许多不同的类库。`XmlDocument`类能让你像处理文件一样处理xml数据，而`XmlReader`、`XmlWriter`和它们的派生类使你能够将`xml`数据作为数据流处理。
