@@ -168,7 +168,7 @@ theme_config:
 
   avatar:
     # Replace the default image and set the url here.
-    url: http://image.wxzvip.cn/avatar.jpg #/images/avatar.gif
+    url: /images/avatar.jpg
     # If true, the avatar will be dispalyed in circle.
     rounded: true
 
@@ -179,7 +179,7 @@ theme_config:
   links:
     必应: https://cn.bing.com
 
-  custom_logo: http://image.wxzvip.cn/tyj-logo.png #/uploads/custom-logo.jpg
+  custom_logo: /blogs/images/tyj-logo.png
 
   codeblock:
     # Code Highlight theme
