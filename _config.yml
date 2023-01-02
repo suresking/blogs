@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://git.wxzvip.com/blogs
+url: https://sdwxz.cn/blogs
 root: /blogs/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -139,7 +139,7 @@ theme_config:
     
     beian:
       enable: true
-      icp: 鲁ICP备17027395号
+      icp: 鲁ICP备17027395-1号
 
   # Creative Commons 4.0 International License.
   # See: https://creativecommons.org/share-your-work/licensing-types-examples
